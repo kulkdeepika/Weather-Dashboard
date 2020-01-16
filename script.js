@@ -4,10 +4,20 @@ var cityName;
 
 var lat;
 var lon;
+onLoad();
+function onLoad(){
+    // navigator.geolocation.getCurrentPosition(showPosition);
+    // function showPosition(position) {
+    //     console.log(position.coords.latitude) + 
+    //     console.log(position.coords.longitude);
+    //   }
+    renderLocationHistory();
+    displayData();
+}
 
 console.log(window);
 initializeLocalStorage();
-renderLocationHistory();
+//renderLocationHistory();
 
 function renderLocationHistory(){
     locations = JSON.parse(localStorage.getItem("weatherDataKey"));
@@ -19,26 +29,34 @@ function renderLocationHistory(){
 
 }
 
-function updateLocalStorage(){
+function updateLocalStorage(currCityName){
     locations = JSON.parse(localStorage.getItem("weatherDataKey"));
 
     for(let i=0; i<locations.length;i++)
     {
-        let newCity = $(".form-control").val();
-        if(locations[i] === newCity)
+        //let newCity = $(".form-control").val();
+        if(locations[i] === currCityName)
         {
+            for(let j=i; j<locations.length - 1;j++)
+            {
+                locations[j] = locations[j+1];
+            }
+            locations[locations.length - 1] = currCityName;
+
+            localStorage.setItem("weatherDataKey", JSON.stringify(locations));
+
             return;
         }
     }
 
     if(locations.length < 5)
     {  
-        locations.push($(".form-control").val());
+        locations.push(currCityName);
     }
     else
     {
         locations.shift();
-        locations.push($(".form-control").val());
+        locations.push(currCityName);
     }
     
     localStorage.setItem("weatherDataKey", JSON.stringify(locations));
@@ -67,17 +85,25 @@ function displayData(){
 
    console.log($(this).is("button"));
    console.log($(this).text());
+   console.log($(this).is("li"));
 
    if($(this).is("button")) 
    {
     event.preventDefault();
-    updateLocalStorage();
-    renderLocationHistory();
     cityName = $(".form-control").val();
+    updateLocalStorage(cityName);
+    renderLocationHistory();
+    
+   }
+   else if($(this).is("li"))
+   {
+    cityName = $(this).text();
+    updateLocalStorage(cityName);
+    renderLocationHistory();
    }
    else
    {
-    cityName = $(this).text();
+       cityName = $("#listLocation4").text();
    }
 
 
@@ -109,6 +135,9 @@ function displayData(){
     
         lat = response.coord.lat;
         lon = response.coord.lon;
+
+        console.log(lat);
+        console.log(lon);
     
         var timeStamp = response.dt;
         var date = new Date(timeStamp * 1000);
@@ -143,7 +172,7 @@ function displayData(){
             //url: "http://api.openweathermap.org/data/2.5/forecast/daily?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon + "&cnt=" + five ,
             method: "GET"
         }).then(function(response){
-            //console.log(response);
+            console.log(response);
     
             //console.log(response.list.length);
     
