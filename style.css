@@ -1,0 +1,38 @@
+h1{
+    background-color: darkgrey;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.form-inline,.list-group{
+    width: 80%;
+}
+
+/* .card-deck{
+    width:18%;
+} */
+.btn{
+    
+    border-radius: 10px;
+}
+#currentWeather{
+    border-style: solid;
+    border-color: gray;
+    border-width: thin;
+}
+
+#currUVindex{
+    background-color: orangered;
+    border-radius: 5px;
+    width:50px;
+    color: white;
+    font-size: small;
+}
+
+#searchBlock{
+    background-color: gainsboro;
+}
+.card-body{
+    padding: 5px;
+}
