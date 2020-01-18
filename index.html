@@ -20,7 +20,7 @@
 <body>
     <h1>Weather Dashboard</h1>
     <div class="container">
-    <div class="row">
+    <div id= "mainRow" class="row">
         <div class="col-3" id="searchBlock">
             <form class="form-inline active-cyan-4">
                 <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search for a City"
@@ -29,11 +29,11 @@
             </form>
             <br>
             <ul class="list-group">
-                <li id="listLocation4" class="list-group-item">Cras justo odio</li>
-                <li id="listLocation3" class="list-group-item">Dapibus ac facilisis in</li>
-                <li id="listLocation2" class="list-group-item">Morbi leo risus</li>
-                <li id="listLocation1" class="list-group-item">Porta ac consectetur ac</li>
-                <li id="listLocation0" class="list-group-item">Vestibulum at eros</li>
+                <li id="listLocation4" class="list-group-item">Seattle</li>
+                <li id="listLocation3" class="list-group-item">New York</li>
+                <li id="listLocation2" class="list-group-item">California</li>
+                <li id="listLocation1" class="list-group-item">Austin</li>
+                <li id="listLocation0" class="list-group-item">San Jose</li>
             </ul>
         </div>
     
@@ -41,9 +41,9 @@
     <div class="col-9" id="forecast">
         <div class="row" id="currentWeather">
             <div class="col">
-                <h3><span id ="cityName">Atlanta (1/14/2020) </span><span id="icon"><img id="wicon" src="" alt="Weather icon"></span></h3>
+                <h3><span id ="cityName"></span><span id="icon"><img id="wicon" src="" alt="Weather icon"></span></h3>
                 <p>Temperature: <span id="currTemp"></span> &#8457</p>
-                <p>Humidity: <span id="currHumidity"></span></p>
+                <p>Humidity: <span id="currHumidity"></span>%</p>
                 <p>Wind Speed: <span id="currWindSpeed"></span></p>
                 <p> UV Index: <span id="currUVindex"></span></p>   
             </div>
@@ -102,9 +102,21 @@
     </div>
     </div>
 </div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>There was an error. Please check the city name or try again later</p>
+      </div>
+</div>
+
+
     <script src="script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
 </body>
 </html>
+
