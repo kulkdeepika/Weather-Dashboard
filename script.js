@@ -108,7 +108,7 @@ function displayData(){
 
         //getting the current weather icon from the response data
         var iconcode = response.weather[0].icon;
-        var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+        var iconurl = "https://openweathermap.org/img/w/" + iconcode + ".png";
         $("#wicon").attr('src', iconurl);
 
         //setting the current temperature
@@ -145,7 +145,7 @@ function displayData(){
 
 function getUVIndex(){
     $.ajax({
-        url: "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon ,
+        url: "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon ,
         method: "GET"
       }).then(function(response) {
         $("#currUVindex").text(response.value);
@@ -155,7 +155,7 @@ function getUVIndex(){
 function getForecast(){
 
     $.ajax({
-        url: "http://api.openweathermap.org/data/2.5/forecast?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon ,
+        url: "https://api.openweathermap.org/data/2.5/forecast?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon ,
         method: "GET"
     }).then(function(response){
 
