@@ -1,3 +1,6 @@
+
+$(document).ready(function () {
+
 var APIKey = "16202c6e80fee5da38da3ef00e9cdf59";
 var cityName;
 var lat;
@@ -161,75 +164,65 @@ function getForecast(){
 
         //console.log(response.list.length);
 
-        // var j=1;
-        // for(let i=3; i<response.list.length;i+=8)
-        // {
-        //     //Temperature
-        //     let tempK = response.list[i].main.temp;
-        //     let tempF = (tempK - 273.15) * 9/5 + 32;
-        //     $(`#tempDay${j}`).text(tempF.toFixed(2));
-
-        //     //Humidity
-        //     $(`#humDay${j}`).text(response.list[i].main.humidity);
-
-        //     //Date
-        //     // var timeStamp = response.list[i].dt;
-        //     // var date = new Date(timeStamp * 1000);
-        //     // var month = date.getMonth() + 1;
-        //     // var year = date.getFullYear();
-
-        //     // var dateStr = month + "/" + date.getDate() + "/" + year ;
-
-        //    // $(`#dateDay${j}`).text(dateStr);
-
-        //     /////////////////////////////////////
-
-        //     var dateTimeString = response.list[i].dt_txt;
-        //     dateString = dateTimeString.split(" ");
-        //     dateString = moment(dateString[0], "YYYY/MM/DD").format("MM/DD/YY");
-        //     $(`#dateDay${j}`).text(dateString);
-
-        //     //Get icon
-        //     var iconcode = response.list[i].weather[0].icon;
-        //     var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-        //     $(`#wiconDay${j}`).attr('src', iconurl);
-
-        //     j++;
-        // }
-        var j = 0;
-        for(let i=0; i<response.list.length;i++)
+        var j=1;
+        for(let i=3; i<response.list.length;i+=8)
         {
+            //Temperature
+            let tempK = response.list[i].main.temp;
+            let tempF = (tempK - 273.15) * 9/5 + 32;
+            $(`#tempDay${j}`).text(tempF.toFixed(2));
+
+            //Humidity
+            $(`#humDay${j}`).text(response.list[i].main.humidity);
+
+            //Date
             var dateTimeString = response.list[i].dt_txt;
-            dateStringArr = dateTimeString.split(" ");
-            timeString = dateStringArr[1];
-            
-            if(timeString === "12:00:00")
-            {   
-                j++;
-                
-                //Temperature
-                let tempK = response.list[i].main.temp;
-                let tempF = (tempK - 273.15) * 9/5 + 32;
-                $(`#tempDay${j}`).text(tempF.toFixed(2));
+            dateString = dateTimeString.split(" ");
+            dateString = moment(dateString[0], "YYYY/MM/DD").format("MM/DD/YY");
+            $(`#dateDay${j}`).text(dateString);
 
-                //Humidity
-                $(`#humDay${j}`).text(response.list[i].main.humidity);
+            //Get icon
+            var iconcode = response.list[i].weather[0].icon;
+            var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+            $(`#wiconDay${j}`).attr('src', iconurl);
 
-                dateString = moment(dateStringArr[0], "YYYY/MM/DD").format("MM/DD/YY");
-                $(`#dateDay${j}`).text(dateString);
-
-                //Get icon
-                var iconcode = response.list[i].weather[0].icon;
-                var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-                $(`#wiconDay${j}`).attr('src', iconurl);
-
-            }
+            j++;
         }
+        // **** The following commented lines of code are an alternative to the code above; another way to sample the 5-day data.
+        // var j = 0;
+        // for(let i=0; i<response.list.length;i++)
+        // {
+        //     var dateTimeString = response.list[i].dt_txt;
+        //     dateStringArr = dateTimeString.split(" ");
+        //     timeString = dateStringArr[1];
+            
+        //     if(timeString === "12:00:00")
+        //     {   
+        //         j++;
+                
+        //         //Temperature
+        //         let tempK = response.list[i].main.temp;
+        //         let tempF = (tempK - 273.15) * 9/5 + 32;
+        //         $(`#tempDay${j}`).text(tempF.toFixed(2));
+
+        //         //Humidity
+        //         $(`#humDay${j}`).text(response.list[i].main.humidity);
+
+        //         dateString = moment(dateStringArr[0], "YYYY/MM/DD").format("MM/DD/YY");
+        //         $(`#dateDay${j}`).text(dateString);
+
+        //         //Get icon
+        //         var iconcode = response.list[i].weather[0].icon;
+        //         var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+        //         $(`#wiconDay${j}`).attr('src', iconurl);
+
+        //     }
+        // }
 
     });
 }
 
-
+});//end of document.ready
 
 
 

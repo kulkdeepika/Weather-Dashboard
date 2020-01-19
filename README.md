@@ -3,6 +3,7 @@ Get weather outlook for multiple cities
 
 ## Usage
 Being a travel enthusiast, I would like to know the weather and forecast for a city and have quick access to a few cities I plan to include in my travel. This weather only shows the parameters that matter the most, and stores the names of the 5 most recently searched cities so that they can be quickly accessed.
+On the initial use, the user is shown quick access options for some of the major US cities, which then changes to the users recent searches.
 
 ## Limitations
 For the 5-day forecast, ideally, a daily 24-hour forecast data is required for accuracy. Openweatherapi's free subscription only provides access to 5-day 3-hour forecast to get a forecast. The forecast starts 3-6 hours from the time the app is accessed. For this reason, data was sampled randomly for each day, which is not most accurate. 
