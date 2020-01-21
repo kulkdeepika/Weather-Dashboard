@@ -75,15 +75,11 @@ function displayData(){
    {
     event.preventDefault();
     cityName = $(".form-control").val();
-    //updateLocalStorage(cityName);
-   // renderLocationHistory();
-    
+    $(".form-control").val("");
    }
    else if($(this).is("li"))
    {
     cityName = $(this).text();
-    //updateLocalStorage(cityName);
-   // renderLocationHistory();
    }
    else
    {
@@ -161,8 +157,6 @@ function getForecast(){
         url: "https://api.openweathermap.org/data/2.5/forecast?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon ,
         method: "GET"
     }).then(function(response){
-
-        //console.log(response.list.length);
 
         var j=1;
         for(let i=3; i<response.list.length;i+=8)
